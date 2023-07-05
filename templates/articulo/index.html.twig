@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Articulo{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>Hello {{ controller_name }}! ✅</h1>
+
+    <BR><BR>
+
+     <ul  style="list-style-type: none; padding: 0; margin: 0; display: flex;">
+       <li><code><a href="{{ path('app_usuario') }}">Usuarios</a></code></li>
+        <li><code><a href="{{ path('app_categoria') }}">Categorias</a></code></li>
+        <li><code><a href="{{ path('app_articulo') }}">Articulos</a></code></li>    
+    </ul>
+
+    <BR><BR>
+    <BR><BR>
+   <ul style="list-style-type: none; padding: 0; margin: 0; display: flex;">
+        <li><code><a href="{{ path('crearArticulo') }}">Crea Articulo</a></code></li>
+        <li>Modificar Articulo
+           <form action="{{ path('cambiarArticulo') }}" method="POST">
+                <label for="id">ID:</label>
+                <input type="text" id="id" name="id" required>
+
+                <input type="submit" value="Enviar">
+            </form>
+        </li>
+        <li>Eliminar Articulo
+             <form action="{{ path('eliminarArticulo') }}" method="POST">
+                <label for="id">ID:</label>
+                <input type="text" id="id" name="id" required>
+
+                <input type="submit" value="Enviar">
+            </form>
+        </li>
+        <li> mostrar Articulo
+            <form action="{{ path('mostrarArticulo') }}" method="POST">
+                <label for="id">ID:</label>
+                <input type="text" id="id" name="id" required>
+
+                <input type="submit" value="Enviar">
+            </form>
+        </li>
+        
+    </ul>
+    <ul>
+        <li>
+            titulo : {{ articulo.titulo }} 
+        </li>
+        <li>
+            autor : {{ articulo.usuario.nombre }}
+        </li>
+        <li>
+            categoria  : 
+        </li>
+        <li>
+            contenido : {{ articulo.contenido }}
+        </li>
+        
+    </ul>
+</div>
+{% endblock %}
