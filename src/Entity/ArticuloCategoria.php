@@ -15,7 +15,7 @@ class ArticuloCategoria
 
     #[ORM\OneToOne(cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Articulo $ArticuloId = null;
+    private ?Articulo $articulo = null;
 
     #[ORM\OneToOne(cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: false)]
@@ -26,14 +26,14 @@ class ArticuloCategoria
         return $this->id;
     }
 
-    public function getArticuloId(): ?Articulo
+    public function getArticulo(): ?Articulo
     {
-        return $this->ArticuloId;
+        return $this->articulo;
     }
 
-    public function setArticuloId(Articulo $ArticuloId): static
+    public function setArticulo(Articulo $articulo): static
     {
-        $this->ArticuloId = $ArticuloId;
+        $this->articulo = $articulo;
 
         return $this;
     }

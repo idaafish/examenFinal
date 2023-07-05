@@ -71,17 +71,34 @@ class ArticuloController extends AbstractController
         $usuario = new Usuario();
         $usuario = $this->em->getRepository(Usuario::class)->find(rand(1,10));    
         $articulo->setUsuario($usuario);
+
+         //persistimos
+         $this->em->persist($articulo);
+
+         // ejecutamos la query, por ejemplo, el insertar. 
+         $this->em->flush();
         
         $categoria = new Categoria();
 
         //TODO llamar a la funcion que crea el articuloCAtegoria de su controller
-      
-                           
+        $articuloCategoria = new ArticuloCategoria();
+       
+        //rellenamos valores
+        $categoria = new Categoria;
+        $categoria = $this->em->getRepository(Categoria::class)->find(rand(1,10));
+        $articuloCategoria->setCategoria($categoria);
+
+        //$articulo = new Articulo();
+        //$articulo = $this->em->getRepository(Articulo::class)->find(rand(1,10));  
+        $articuloCategoria->setArticulo($articulo);
+		          
         //persistimos
-        $this->em->persist($articulo);
+        $this->em->persist($articuloCategoria);
 
         // ejecutamos la query, por ejemplo, el insertar. 
         $this->em->flush();
+                           
+       
 
        
         return $this->render('articulo/index.html.twig', [
