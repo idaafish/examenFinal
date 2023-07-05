@@ -15,15 +15,27 @@ class ArticuloCategoria
 
     #[ORM\OneToOne(cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Categoria $categoria = null;
+    private ?Articulo $ArticuloId = null;
 
     #[ORM\OneToOne(cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Usuario $usuario = null;
+    private ?Categoria $categoria = null;
 
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function getArticuloId(): ?Articulo
+    {
+        return $this->ArticuloId;
+    }
+
+    public function setArticuloId(Articulo $ArticuloId): static
+    {
+        $this->ArticuloId = $ArticuloId;
+
+        return $this;
     }
 
     public function getCategoria(): ?Categoria
@@ -34,18 +46,6 @@ class ArticuloCategoria
     public function setCategoria(Categoria $categoria): static
     {
         $this->categoria = $categoria;
-
-        return $this;
-    }
-
-    public function getUsuario(): ?Usuario
-    {
-        return $this->usuario;
-    }
-
-    public function setUsuario(Usuario $usuario): static
-    {
-        $this->usuario = $usuario;
 
         return $this;
     }

@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Controller\ArticuloCategoriaController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -12,6 +13,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\Usuario;
 use App\Entity\Articulo;
 use App\Entity\Categoria;
+use App\Entity\ArticuloCategoria;
 use Symfony\Component\Validator\Constraints\Date;
 use Symfony\Component\Validator\Constraints\Length;
 
@@ -45,7 +47,7 @@ class ArticuloController extends AbstractController
         $categoria = new Categoria();
         $articulo->setUsuario($usuario);
         // TODO ver categoria
-        //$articulo->setCategoria($categoria);
+     
 
         return $this->render('articulo/index.html.twig', [
             'controller_name' => 'ArticuloController',
@@ -73,7 +75,8 @@ class ArticuloController extends AbstractController
         $categoria = new Categoria();
 
         //TODO llamar a la funcion que crea el articuloCAtegoria de su controller
-                   
+      
+                           
         //persistimos
         $this->em->persist($articulo);
 
